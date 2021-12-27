@@ -10,18 +10,13 @@ if ($action=='index')
 //print_r($data);
     include './views/index.php';
 }
-if ($action=='detail')
-{
-    
-    $id =Utilities::get('id');
-    $data =$sach->detail($id);
-    $maloai =$_GET['id'];
-    $hinh="";
-    
-    include './views/detail.php';
+
+if($action == 'delete'){
+    $id = isset($_GET['id'])?$_GET['id']:'';
+    $data =$sach->delete($id); 
+    include './views/index.php';
 }
 
-//add product
 if($action == 'Addsach'){
     $dataloai=$sach->getAllLoaiSach();
     $datanxb=$sach->getAllNXB();
@@ -38,6 +33,7 @@ if($action == 'addBook'){
         $hinh=$_FILES['hinh']['name'];
         $rootDir = realpath($_SERVER["DOCUMENT_ROOT"]);
     move_uploaded_file($_FILES['hinh']['tmp_name'],$rootDir.'../DoAnMNM/assets/img/book/'.$hinh);
+        var_dump("vo".$masach,"danh".$tensach,"suong".$hinh);
     }
 
     $maloai=isset($_POST['maloai'])?$_POST['maloai']:'';
@@ -50,3 +46,18 @@ if($action == 'addBook'){
   
     include './views/index.php';  
 }
+
+
+if ($action=='detail')
+{
+    //$id = isset($_GET['id'])?$_GET['id']:'';
+    $id =Utilities::get('id');
+    $data =$sach->detail($id);
+    $maloai =$_GET['id'];
+    $hinh="";
+    
+    include './views/detail.php';
+}
+
+
+?>

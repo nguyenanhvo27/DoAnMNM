@@ -41,4 +41,11 @@ class Sach extends Db
         $data = $this->selectQuery('select * from sach where masach=?', [$id]);
         return $data[0];
     }
+
+    //delete product
+    function delete($id)
+    {
+        $data = $this->selectQuery(' DELETE FROM `sach`where masach=?', [$id]);
+        return $this->selectQuery('select * from sach');
+    }
 }
