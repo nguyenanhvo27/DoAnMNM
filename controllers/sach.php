@@ -37,6 +37,6 @@ if ($action=='search')
 {
    // $kw = isset($_GET['kw'])?$_GET['kw']:'';
    $kw = Utilities::get('kw');
-    $data = $Sach->search($kw);
+    $data = $sach->search($kw);
     include './views/sach/index.php';
 }
