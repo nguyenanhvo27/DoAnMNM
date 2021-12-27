@@ -93,6 +93,15 @@ if ($action=='detail')
     
     include './views/detail.php';
 }
+if ($action=='search')
+{
+    $dataloai=$sach->getAllLoaiSach();
+    $datanxb=$sach->getAllNXB();
+   // $kw = isset($_GET['kw'])?$_GET['kw']:'';
+   $kw = Utilities::get('kw');
+    $data = $sach->search($kw);
+    include './views/index.php';
+}
 
 
 ?>

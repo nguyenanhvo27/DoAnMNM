@@ -33,3 +33,10 @@ if ($action=='detail')
     
     include './views/sach/detail.php';
 }
+if ($action=='search')
+{
+   // $kw = isset($_GET['kw'])?$_GET['kw']:'';
+   $kw = Utilities::get('kw');
+    $data = $sach->search($kw);
+    include './views/sach/index.php';
+}
