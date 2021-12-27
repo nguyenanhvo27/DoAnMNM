@@ -92,6 +92,21 @@ if($action=='login') {
 
 }
 
+function checkLogin($username, $password) {
+    $sach = new Sach();
+    // Check User
+
+    $user = $sach->getAccUser($username, $password) ?? null;
+    $str = "";
+    if($user!=null) {
+        $str = "user";
+    }else{
+        $str = "Sai tài khoản user";
+    }
+    // Check Admin
+    return $str;
+}
+
 function checkAdmin($username, $password) {
     $sach = new Sach();
     // Check User
