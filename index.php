@@ -19,7 +19,6 @@
     // echo "$newPw";exit;
    
 ?>
-   
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,14 +37,23 @@
     include './pages/header.php';
     ?>
     <div>
-    <?php 
+        <?php 
         if ($controller=='sach')
         {
             include './controllers/sach.php';
         }
+        if ($controller=='giohang')
+        {
+            include './controllers/giohang.php';
+        }
+
+        if ($controller=='khachhang')
+        {
+            include './controllers/khachhang.php';
+        }
+
         ?>
     </div>
-    
     <?php 
     include './pages/footer.php';
     ?>

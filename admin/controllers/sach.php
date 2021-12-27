@@ -104,8 +104,17 @@ if($action=='loc'){
     $datanxb=$sach->getAllNXB();
     include './views/index.php';
 }
+if($action == "adminPage") {
+    
+    $datanxb=$sach->getAllNXB();
+    $data =$sach->all();
+    header("Location:admin/index.php?controller=sach&action=index");
+    exit();
+}
 
-
-
+if($action=='logout') {
+    unset($_SESSION["username"]);
+    
+}
 
 ?>

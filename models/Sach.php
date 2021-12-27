@@ -62,4 +62,13 @@ class Sach extends Db
     function loc($manxb,$maloai){
         return $this->selectQuery("select * from sach where maloai = '$maloai' and manxb = '$manxb'");
     }
+    function getAccUser($email, $password) {
+        $data = $this->selectKhachHang($email, $password);
+        return $data;
+    }
+
+    function getAccAdmin($email, $password) {
+        $data = $this->selectAdmin($email, $password);
+        return $data;
+    }
 }

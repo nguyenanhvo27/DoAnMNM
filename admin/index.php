@@ -37,11 +37,15 @@
     include './pages/header.php';
     ?>
     <div>
-    <?php 
+        <?php 
         if ($controller=='sach')
         {
             include './controllers/sach.php';
         }
+        if ($controller=='khachhang'){
+            include './controllers/khachhang.php';
+        }
+       
         ?>
     </div>
     <?php 

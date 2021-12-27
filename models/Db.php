@@ -22,4 +22,51 @@ class Db{
         $stm->execute($arr);
         return $stm->rowCount();
     }
+    public function selectKhachHang($username, $password) {
+        $sql = "select email,matkhau from khachhang where email='${username}' and matkhau='${password}'";
+
+        //Tạo Prepared Statement
+
+        $stmt = self::$pdo->prepare($sql);
+
+
+        //Thiết lập kiểu dữ liệu trả về
+
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+
+
+
+        //Gán giá trị và thực thi
+
+        $stmt->execute();
+
+
+
+        return $stmt->fetchAll();
+
+    }
+
+    public function selectAdmin($username, $password) {
+        $sql = "select username,matkhau from quantri where username='${username}' and matkhau='${password}'";
+
+        //Tạo Prepared Statement
+
+        $stmt = self::$pdo->prepare($sql);
+
+
+        //Thiết lập kiểu dữ liệu trả về
+
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+
+
+
+        //Gán giá trị và thực thi
+
+        $stmt->execute();
+
+
+        return $stmt->fetchAll();
+
+    }
 }
+
