@@ -56,4 +56,11 @@ class Sach extends Db
         $data = $this->updateQuery($sql);
         return $this->selectQuery('select * from sach');
     }
+    //search product 
+    function search($kw)
+    {
+        $s = 'select * from sach where tensach like ?';
+        $a = ["%$kw%"];
+        return $this->selectQuery($s, $a);
+    }
 }
