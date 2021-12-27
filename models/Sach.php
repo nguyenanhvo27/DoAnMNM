@@ -27,4 +27,18 @@ class Sach extends Db
         $data = $this->selectQuery('select * from sach where masach=?', [$id]);
         return $data[0];
     }
+
+    //add product
+    public function addBook($id, $name, $des, $price, $img, $nxb, $loai)
+    {
+        $sql = "INSERT INTO sach(masach, tensach, mota, gia, hinh, manxb, maloai) 
+        VALUES ('$id','$name','$des','$price','$img','$nxb','$loai')";
+        $data = $this->updateQuery($sql);
+        return $this->selectQuery('select * from sach');
+    }
+    function getInfoSach($id)
+    {
+        $data = $this->selectQuery('select * from sach where masach=?', [$id]);
+        return $data[0];
+    }
 }
