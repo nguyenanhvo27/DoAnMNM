@@ -14,6 +14,24 @@ class Sach extends Db
     {
         return $this->selectQuery("select * from sach order by rand() limit 0, $n");
     }
+
+    function search($kw)
+    {
+        $s = 'select * from sach where tensach like ?';
+        $a = ["%$kw%"];
+        return $this->selectQuery($s, $a);
+    }
+
+    function detail($id)
+    {
+        $data = $this->selectQuery('select * from sach where masach=?', [$id]);
+        return $data[0];
+    }
+    function delete($id)
+    {
+        $data = $this->selectQuery(' DELETE FROM `sach`where masach=?', [$id]);
+        return $this->selectQuery('select * from sach');
+    }
     function getAllLoaiSach()
     {
         return $this->selectQuery('select * from loai');
@@ -22,13 +40,6 @@ class Sach extends Db
     {
         return $this->selectQuery('select * from nhaxb');
     }
-    function detail($id)
-    {
-        $data = $this->selectQuery('select * from sach where masach=?', [$id]);
-        return $data[0];
-    }
-
-    //add product
     public function addBook($id, $name, $des, $price, $img, $nxb, $loai)
     {
         $sql = "INSERT INTO sach(masach, tensach, mota, gia, hinh, manxb, maloai) 
@@ -41,26 +52,14 @@ class Sach extends Db
         $data = $this->selectQuery('select * from sach where masach=?', [$id]);
         return $data[0];
     }
-
-    //delete product
-    function delete($id)
-    {
-        $data = $this->selectQuery(' DELETE FROM `sach`where masach=?', [$id]);
-        return $this->selectQuery('select * from sach');
-    }
-
-    //edit product
     public function updateBook($id, $name, $des, $price, $img, $nxb, $loai)
     {
         $sql = "UPDATE `sach` SET `tensach`='$name',`mota`='$des',`gia`='$price',`hinh`='$img',`manxb`='$nxb',`maloai`='$loai' WHERE masach='$id'";
         $data = $this->updateQuery($sql);
         return $this->selectQuery('select * from sach');
     }
-    //search product 
-    function search($kw)
-    {
-        $s = 'select * from sach where tensach like ?';
-        $a = ["%$kw%"];
-        return $this->selectQuery($s, $a);
+    
+    function loc($manxb,$maloai){
+        return $this->selectQuery("select * from sach where maloai = '$maloai' and manxb = '$manxb'");
     }
 }

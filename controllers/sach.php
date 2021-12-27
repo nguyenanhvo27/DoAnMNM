@@ -40,3 +40,11 @@ if ($action=='search')
     $data = $sach->search($kw);
     include './views/sach/index.php';
 }
+if($action=='loc'){
+    $maloai=isset($_POST['maloai'])?$_POST['maloai']:'';
+    $manxb=isset($_POST['manxb'])?$_POST['manxb']:'';
+    $data=$sach->loc($manxb, $maloai);
+    $dataloai=$sach->getAllLoaiSach();
+    $datanxb=$sach->getAllNXB();
+    include './views/sach/index.php';
+}

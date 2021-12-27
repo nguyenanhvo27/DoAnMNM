@@ -3,12 +3,22 @@
 
       <div class="col-6 col-sm-6">
         Loại <select name="maloai" id="" class="form-control">
-          
+        <?php foreach ($dataloai as $r) {
+          ?>
+            <option value="<?php echo $r['maloai'] ?>"><?php echo $r['tenloai'] ?></option>
+          <?php
+          }
+          ?>
         </select>
       </div>
       <div class="col-6 col-sm-6">
         Nhà xuất bản <select name="manxb" id="" class="form-control">
-         
+        <?php foreach ($datanxb as $r) {
+          ?>
+            <option value="<?php echo $r['manxb'] ?>"><?php echo $r['tennxb'] ?></option>
+          <?php
+          }
+          ?>
         </select>
       </div>
     </div>

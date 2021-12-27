@@ -10,8 +10,15 @@ if ($action=='index')
 //print_r($data);
     include './views/index.php';
 }
-
-//delete product
+if ($action=='search')
+{
+    $dataloai=$sach->getAllLoaiSach();
+    $datanxb=$sach->getAllNXB();
+   // $kw = isset($_GET['kw'])?$_GET['kw']:'';
+   $kw = Utilities::get('kw');
+    $data = $sach->search($kw);
+    include './views/index.php';
+}
 if($action == 'delete'){
     $id = isset($_GET['id'])?$_GET['id']:'';
     $data =$sach->delete($id); 
@@ -24,7 +31,6 @@ if($action == 'Addsach'){
     include './views/add.php';
 }
 
-//add product
 if($action == 'addBook'){
     $masach=isset($_POST['masach'])?$_POST['masach']:'';
     $tensach=isset($_POST['tensach'])?$_POST['tensach']:'';
@@ -34,7 +40,7 @@ if($action == 'addBook'){
     if($_FILES['hinh']['error']==0){
         $hinh=$_FILES['hinh']['name'];
         $rootDir = realpath($_SERVER["DOCUMENT_ROOT"]);
-    move_uploaded_file($_FILES['hinh']['tmp_name'],$rootDir.'../DoAnMNM/assets/img/book/'.$hinh);
+    move_uploaded_file($_FILES['hinh']['tmp_name'],$rootDir.'../DoAnCuoiKyThucHanhWeb_NguyenAnhVo_DH51803800/assets/img/book/'.$hinh);
         var_dump("vo".$masach,"danh".$tensach,"suong".$hinh);
     }
 
@@ -48,8 +54,6 @@ if($action == 'addBook'){
   
     include './views/index.php';  
 }
-
-//edit product
 if($action =='update'){
     $id = isset($_GET['id'])?$_GET['id']:'';
     $dataUpdate=$sach->getInfoSach($id);
@@ -82,7 +86,6 @@ if($action == 'updateBook'){
     
     include './views/index.php';  
 }
-
 if ($action=='detail')
 {
     //$id = isset($_GET['id'])?$_GET['id']:'';
@@ -93,15 +96,16 @@ if ($action=='detail')
     
     include './views/detail.php';
 }
-if ($action=='search')
-{
+if($action=='loc'){
+    $maloai=isset($_POST['maloai'])?$_POST['maloai']:'';
+    $manxb=isset($_POST['manxb'])?$_POST['manxb']:'';
+    $data=$sach->loc($manxb, $maloai);
     $dataloai=$sach->getAllLoaiSach();
     $datanxb=$sach->getAllNXB();
-   // $kw = isset($_GET['kw'])?$_GET['kw']:'';
-   $kw = Utilities::get('kw');
-    $data = $sach->search($kw);
     include './views/index.php';
 }
+
+
 
 
 ?>
