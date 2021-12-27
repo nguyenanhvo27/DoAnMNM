@@ -22,3 +22,14 @@ if ($action=='tatca')
 //print_r($data);
     include './views/sach/index.php';
 }
+if ($action=='detail')
+{
+    //$id = isset($_GET['id'])?$_GET['id']:'';
+    $id =Utilities::get('id');
+    $data =$sach->detail($id);
+    $maloai =$_GET['id'];
+    $hinh="";
+    
+    
+    include './views/sach/detail.php';
+}

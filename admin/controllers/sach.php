@@ -10,3 +10,13 @@ if ($action=='index')
 //print_r($data);
     include './views/index.php';
 }
+if ($action=='detail')
+{
+    
+    $id =Utilities::get('id');
+    $data =$sach->detail($id);
+    $maloai =$_GET['id'];
+    $hinh="";
+    
+    include './views/detail.php';
+}

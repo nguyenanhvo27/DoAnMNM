@@ -22,4 +22,9 @@ class Sach extends Db
     {
         return $this->selectQuery('select * from nhaxb');
     }
+    function detail($id)
+    {
+        $data = $this->selectQuery('select * from sach where masach=?', [$id]);
+        return $data[0];
+    }
 }
