@@ -26,7 +26,7 @@ if ($action=='detail')
 {
     //$id = isset($_GET['id'])?$_GET['id']:'';
     $id =Utilities::get('id');
-    
+    $data =$sach->detail($id);
     $maloai =$_GET['id'];
     $hinh="";
     
