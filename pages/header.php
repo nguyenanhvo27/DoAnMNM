@@ -9,6 +9,7 @@
     <title>User</title>
 </head>
 <body>
+    <?php session_start(); ?>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand text-danger" href="#">User</a>
     <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
@@ -23,15 +24,25 @@
             <li class="nav-item">
                 <a class="nav-link" href="index.php?controller=sach&action=tatca">Tat ca sach</a>
             </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Quyền</a>
-                <div class="dropdown-menu" aria-labelledby="dropdownId">
-                <a class="dropdown-item" href="./admin/index.php" >Admin</a>
-                    <a class="dropdown-item" href="index.php">User</a>
-                </div>
-            </li>
+            
             <li class="nav-item">
                 <a class="nav-link" href="index.php?controller=sach&action=about">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="index.php?controller=sach&action=loginForm">
+                    <?php if(isset($_SESSION["username"])) { 
+                        echo "Hi ".$_SESSION["username"];
+                    }else {
+                        echo "Login";
+                    }?>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="index.php?controller=sach&action=logout">
+                    <?php if(isset($_SESSION["username"])) { 
+                        echo "Logout";
+                    }?>
+                </a>
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0" 
