@@ -1,4 +1,24 @@
+<?php 
+    include 'config.php';
+    function loadClass($className)
+    {
+        if (is_file("models/$className.php"))
+            include "./models/$className.php";
+        else {
+            echo 'Err';exit;
+        }
+    }
 
+    spl_autoload_register('loadClass');
+
+    $x= new Db();
+    //$controller= isset($_GET['controller'])?$_GET['controller']:'sach';
+    $controller = Utilities::get('controller', 'sach');
+
+    // $newPw= Utilities::encyptSHA1('123456');
+    // echo "$newPw";exit;
+   
+?>
    
 <!DOCTYPE html>
 <html lang="en">
@@ -18,8 +38,14 @@
     include './pages/header.php';
     ?>
     <div>
-        
+    <?php 
+        if ($controller=='sach')
+        {
+            include './controllers/sach.php';
+        }
+        ?>
     </div>
+    
     <?php 
     include './pages/footer.php';
     ?>
