@@ -23,6 +23,32 @@
     <td class="columnTitle">Detail</td>
     <td class="columnTitle">Delete</td>
     <td class="columnTitle">Update</td>
-   
+    <?php
+    foreach ($data as $r) {
+    ?>
+            <tr>
+            <td class="columnND"><img src="../assets/img/book/<?php echo $r['hinh']; ?>"></td>
+            <td class="columnND"><?php echo $r['masach']; ?></td>
+            <td class="columnND"> <?php echo $r['tensach']; ?></td>
+            <td class="columnND"><?php echo $r['gia']; ?>VNĐ</td>
+            <td class="columnND">
+            <a class="btn btn-info" href="./index.php?controller=sach&action=detail&id=<?php echo $r['masach'] ?>">
+              Chi tiet
+           </a>
+            </td>
+            <td class="columnND">
+            <a class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa không')" href="./index.php?controller=sach&action=delete&id=<?php echo $r['masach'] ?>">
+            Xóa
+          </a>
+            </td>
+            <td class="columnND">
+            <a class="btn btn-primary" href="./index.php?controller=sach&action=update&id=<?php echo $r['masach'] ?>">
+            sửa
+          </a>
+            </td>
+        </tr>
+        <?php
+    }
+?>
 
 </table>

@@ -26,5 +26,21 @@
     <td class="columnTitle">Detail</td>
    
   </div>
-   
+  <?php
+    foreach ($data as $r) {
+    ?>
+            <tr>
+            <td class="columnND"><img src="./assets/img/book/<?php echo $r['hinh']; ?>"></td>
+            <td class="columnND"><?php echo $r['masach']; ?></td>
+            <td class="columnND"> <?php echo $r['tensach']; ?></td>
+            <td class="columnND"><?php echo $r['gia']; ?>VNĐ</td>
+            <td class="columnND">
+            <a class="btn btn-info" href="./index.php?controller=sach&action=detail&id=<?php echo $r['masach'] ?>">
+              Chi tiet
+           </a>
+            </td>
+        </tr>
+        <?php
+    }
+?>
 </table>
